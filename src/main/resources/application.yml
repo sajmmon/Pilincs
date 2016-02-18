@@ -6,6 +6,7 @@ spring:
   jackson.serialization.INDENT_OUTPUT: true
 server:
   contextPath: /pilincs
+  port: 8091
 panorama:
   connectionUrl: https://panoramaweb.org/labkey
   folders: LINCS/P100,LINCS/GCP
