@@ -6,6 +6,7 @@ import edu.uc.eh.domain.*;
 import edu.uc.eh.domain.json.*;
 import edu.uc.eh.domain.repository.*;
 import edu.uc.eh.service.QueryService;
+import edu.uc.eh.service.ReplicateService;
 import edu.uc.eh.utils.ConnectPanorama;
 import edu.uc.eh.DatabaseLoader;
 import edu.uc.eh.utils.UtilsParse;
@@ -38,6 +39,8 @@ public class RestController {
     private final MergedProfileRepository mergedProfileRepository;
     private final DatabaseLoader databaseLoader;
 
+    private final ReplicateService replicateService;
+
     @Autowired
     public RestController(ConnectPanorama connectPanorama,
                           GctFileRepository gctFileRepository,
@@ -46,7 +49,9 @@ public class RestController {
                           PeakAreaRepository peakAreaRepository,
                           QueryService queryService,
                           ProfileRepository profileRepository,
-                          MergedProfileRepository mergedProfileRepository, DatabaseLoader databaseLoader) {
+                          MergedProfileRepository mergedProfileRepository,
+                          DatabaseLoader databaseLoader,
+                          ReplicateService replicateService) {
 
         this.connectPanorama = connectPanorama;
         this.gctFileRepository = gctFileRepository;
@@ -57,6 +62,7 @@ public class RestController {
         this.profileRepository = profileRepository;
         this.mergedProfileRepository = mergedProfileRepository;
         this.databaseLoader = databaseLoader;
+        this.replicateService = replicateService;
     }
 
 
@@ -603,5 +609,13 @@ public class RestController {
         }
         return output;
     }
+
+    @RequestMapping(value = "api-replicate-issues", method = RequestMethod.GET, produces = "text/plain")
+    public
+    @ResponseBody
+    String getReplicateProblems() {
+        return replicateService.getUnexpectedSitutations();
+    }
+
 
 }

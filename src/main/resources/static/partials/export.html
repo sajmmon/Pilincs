@@ -63,7 +63,8 @@
             <div class="radio" ng-repeat="group in ctrl.normalization">
                 <label>
                     <input type="radio" value="{{group.id}}" ng-model="ctrl.normalizationRadio">
-                    {{group.name}}
+                    Broad DSGC
+                    <!--{{group.name}}-->
                 </label>
             </div>
         </div>
@@ -99,5 +100,16 @@
     <div>
         Specified export is also available with API call:<br/>
         <a ng-href="http://www.eh3.uc.edu{{ctrl.targetUrl}}" target="_blank">{{ctrl.targetUrl}}</a>
+    </div>
+    <div>
+        <br/><br/>
+
+        In order to download the most recent version of the entire data set available through piLINCS use the following links.<br/><br/>
+        </p>
+        <p>P100 dataset with QC+NORM level normalization in GCT format<br/><a href="http://eh3.uc.edu/pilincs/api-gct/P100" target="_blank">eh3.uc.edu/pilincs/api-gct/P100</a></p>
+        <p>Whole P100 dataset with quantile normalization<br/><a href="http://eh3.uc.edu/pilincs/api-normalized-gct/P100" target="_blank">eh3.uc.edu/pilincs/api-normalized-gct/P100</a></p>
+        <br/>
+        <p>GCP dataset with QC+NORM level normalization in GCT format<br/><a href="http://eh3.uc.edu/pilincs/api-gct/GCP" target="_blank">eh3.uc.edu/pilincs/api-gct/GCP</a></p>
+        <p>Whole GCP dataset with quantile normalization<br/><a href="http://eh3.uc.edu/pilincs/api-normalized-gct/GCP" target="_blank">eh3.uc.edu/pilincs/api-normalized-gct/GCP</a></p>
     </div>
 </div>

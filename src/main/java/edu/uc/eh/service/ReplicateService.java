@@ -22,6 +22,10 @@ public class ReplicateService {
 
     private final ReplicateAnnotationRepository replicateAnnotationRepository;
 
+    private StringBuilder unexpectedSitutations = new StringBuilder(
+            "Pairs of replicate annotations with same replicateId but different values of" +
+            " some of other annotations:\n");
+
     @Autowired
     public ReplicateService(ReplicateAnnotationRepository replicateAnnotationRepository) {
         this.replicateAnnotationRepository = replicateAnnotationRepository;
@@ -85,7 +89,8 @@ Update only if LSM ID in DB is Null but other fields are same.
                             log.warn("{}", replicateFromDb);
                             log.warn("{}", replicateAnnotation);
                             log.warn("");
-
+                            unexpectedSitutations.append(replicateFromDb).append("\n");
+                            unexpectedSitutations.append(replicateAnnotation).append("\n");
                         }
                     }
                 } else {
@@ -187,5 +192,9 @@ Update only if LSM ID in DB is Null but other fields are same.
             default:
                 log.warn("New replicate annotation: {}", annotationName);
         }
+    }
+
+    public String getUnexpectedSitutations(){
+        return unexpectedSitutations.toString();
     }
 }

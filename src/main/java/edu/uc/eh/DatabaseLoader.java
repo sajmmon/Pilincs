@@ -103,9 +103,6 @@ public class DatabaseLoader {
         referenceGCPGeneNames = repositoryService.getReferenceGeneNames(AssayType.GCP);
 
         if (ifCreateDropTables.equals("create-drop")) {
-//            loadPeptideAnnotations();
-//            loadReplicateAnnotations();
-
             loadDataPoints();
 //        normalize();
 
